@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        p {
+            font-size: 18px;
+        }
+        
+        .error {
+            color: red;
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <label for="serial-number">序列号:</label><br>
+        <input type="text" id="serial-number" name="serial-number"><br><br>
+        <button onclick="showDate()">提交</button>
+        <p id="output"></p>
+        <p id="error" class="error">请输入正确的序列号</p>
+    </div>
+
+    <script>
+        function showDate() {
+            var serialNumber = document.getElementById("serial-number").value;
+            document.getElementById("output").innerHTML = "";
+            if (serialNumber.length != 'ZF0022230714000399'.length) {
+                document.getElementById("error").style.display = "block";
+                return false
+            } else {
+                document.getElementById("error").style.display = "none";
+            }
+
+            var year = serialNumber.substring(6, 8);
+            var month = serialNumber.substring(8, 10);
+            var day = serialNumber.substring(10, 12);
+
+            document.getElementById("output").innerHTML = "您的显卡出厂日期为20" + year + "年" + month + "月" + day + "日";
+        }
+    </script>
+
+</body>
+
+</html>
