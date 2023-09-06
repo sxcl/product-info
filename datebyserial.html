@@ -28,6 +28,14 @@
             border: 2px solid #ccc;
             border-radius: 4px;
         }
+        /* 调整 placeholder 的样式 */
+        
+        input[type="text"]::placeholder {
+            color: #888;
+            /* 设置提示文本的颜色 */
+            font-size: 16px;
+            /* 设置提示文本的字体大小 */
+        }
         
         button {
             font-size: 18px;
@@ -107,7 +115,7 @@
 <body>
     <div class="container">
         <label for="serial-number">序列号:</label><br>
-        <input type="text" id="serial-number" name="serial-number"><br><br>
+        <input type="text" id="serial-number" name="serial-number" placeholder="请输入您的显卡序列号"><br><br>
         <button onclick="showDate()">提交</button>
         <p id="output"></p>
         <p id="error" class="error">请输入正确的序列号</p>
