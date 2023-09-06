@@ -17,6 +17,10 @@
         }
         
         input[type="text"] {
+            font-size: 18px;
+            /* 增大字体大小 */
+            padding-left: 10px;
+            /* 减少左侧内边距 */
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -73,6 +77,8 @@
         /* ... 其他样式保持不变 ... */
         
         .highlighted-text {
+            display: block;
+            /* 新增这一行，使得highlighted-text元素独占一行 */
             font-weight: bold;
             /* 加粗字体 */
             color: #007BFF;
@@ -89,6 +95,8 @@
                 color: #555;
             }
             .highlighted-text {
+                display: block;
+                /* 新增这一行，使得highlighted-text元素独占一行 */
                 font-size: 22px;
                 /* 在手机上更大的字体大小 */
             }
@@ -160,7 +168,8 @@
             document.getElementById("output").innerHTML = `
             您的显卡出厂日期为<span class="highlighted-text">20${year}年${month}月${day}日</span>
             <br>
-            显卡型号为:
+            显卡型号是：
+            <br>
             <span class="highlighted-text">${cardMapping[prefix]}</span>
         `;
             document.getElementById("error").style.display = "none";
