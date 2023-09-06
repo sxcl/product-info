@@ -169,7 +169,6 @@
                 $iosDialog2.attr('tabindex', '0');
                 $iosDialog2.trigger('focus');
                 createCode(); //刷新验证码  
-                $('#js_input2').val(''); //清空文本框  
             } else { //输入正确时  
                 var serialNumber = sn
                 if (serialNumber.length !== EXPECTED_SERIAL_LENGTH) {
@@ -191,6 +190,7 @@
 
                     }
                 }
+                $('#js_input2').val(''); //清空文本框  
                 createCode(); //刷新验证码  
                 $iosDialog2.fadeIn(200);
                 $iosDialog2.attr('aria-hidden', 'false');
