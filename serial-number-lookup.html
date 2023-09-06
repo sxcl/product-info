@@ -141,13 +141,12 @@
         }
 
         function clearText() {
-            console.log(1)
             $('#sn').val('')
         }
 
         $("#showTooltips").on('click', function() {
-            var sn = $('#sn').val();
-            var inputCode = $('#js_input2').val();
+            var sn = $('#sn').val().trim();
+            var inputCode = $('#js_input2').val().trim();
             var $iosDialog2 = $('#iosDialog2')
 
             if (sn.length <= 0) {
