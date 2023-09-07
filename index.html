@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html lang="zh-cmn-Hans" style="height: 100%;">
 
 <head>
     <meta charset="UTF-8">
@@ -22,8 +22,8 @@
     </style>
 </head>
 
-<body ontouchstart onload='createCode()'>
-    <div class="page">
+<body ontouchstart onload='createCode()' style="height: 100%;">
+    <div class="page" style="height: 100%;">
         <div class="weui-form">
             <div class="weui-form__bd">
                 <div class="weui-form__text-area">
@@ -58,35 +58,36 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="weui-form__ft">
-                <div class="weui-form__tips-area">
-                    <p class="weui-form__tips">
-                        如您没有查询到，请您仔细核对SN码是否录入正确，同时也可以咨询在线客服
-                    </p>
+                <div class="weui-form__ft">
+                    <div class="weui-form__tips-area">
+                        <p class="weui-form__tips">
+                            如您没有查询到，请您仔细核对SN码是否录入正确，同时也可以咨询在线客服
+                        </p>
+                    </div>
+                    <div class="weui-form__opr-area">
+                        <a role="button" aria-disabled="false" class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">查询</a>
+                    </div>
                 </div>
-                <div class="weui-form__opr-area">
-                    <a role="button" aria-disabled="false" class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">查询</a>
+            </div>
+            <div role="alert" id="js_toast" style="display: none;">
+                <div class="weui-mask_transparent"></div>
+                <div class="weui-toast">
+                    <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+                    <p class="weui-toast__content">已完成</p>
                 </div>
             </div>
-        </div>
-        <div role="alert" id="js_toast" style="display: none;">
-            <div class="weui-mask_transparent"></div>
-            <div class="weui-toast">
-                <i class="weui-icon-success-no-circle weui-icon_toast"></i>
-                <p class="weui-toast__content">已完成</p>
+
+            <div class="js_dialog" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="js_title2" id="iosDialog2" style="display: none;">
+                <div class="weui-mask"></div>
+                <div class="weui-dialog">
+                    <div id="reminder_text" class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+                    <div class="weui-dialog__ft">
+                        <a role="button" href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary">知道了</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="js_dialog" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="js_title2" id="iosDialog2" style="display: none;">
-            <div class="weui-mask"></div>
-            <div class="weui-dialog">
-                <div id="reminder_text" class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
-                <div class="weui-dialog__ft">
-                    <a role="button" href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary">知道了</a>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="./zepto.min.js"></script>
