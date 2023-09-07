@@ -183,6 +183,38 @@
                         var month = serialNumber.substring(8, 10);
                         var day = serialNumber.substring(10, 12);
 
+                        // Parse the date from the serial number
+                        var parsedDate = new Date("20" + year, month - 1, day); // months are 0-indexed in JavaScript
+
+                        // Check if the parsed date is valid
+                        if (isNaN(parsedDate.getTime())) {
+                            $('#reminder_text').text('请输入正确的序列号！');
+                            $('#js_input2').val(''); //清空文本框  
+                            createCode(); //刷新验证码  
+                            $iosDialog2.fadeIn(200);
+                            $iosDialog2.attr('aria-hidden', 'false');
+                            $iosDialog2.attr('tabindex', '0');
+                            $iosDialog2.trigger('focus');
+                            return;
+                        }
+
+                        // Get current date
+                        var currentDate = new Date();
+                        currentDate.setHours(0, 0, 0, 0); // set time to midnight for comparison
+
+                        // Compare the parsed date with the current date
+                        if (parsedDate > currentDate) {
+                            $('#reminder_text').text('请输入正确的序列号！');
+                            $('#js_input2').val(''); //清空文本框  
+                            createCode(); //刷新验证码  
+                            $iosDialog2.fadeIn(200);
+                            $iosDialog2.attr('aria-hidden', 'false');
+                            $iosDialog2.attr('tabindex', '0');
+                            $iosDialog2.trigger('focus');
+                            return;
+                        }
+
+
                         // 修改输出格式，将日期和显卡型号放入不同的元素中
                         $('#reminder_text').html(`
             <p id="pmodel">产品型号：${cardMapping[prefix]}</p><p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
