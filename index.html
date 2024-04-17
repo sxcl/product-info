@@ -252,7 +252,7 @@
 
                         // 修改输出格式，将日期和显卡型号放入不同的元素中
                         $('#reminder_text').html(`
-            <p id="pmodel">产品型号：${cardMapping[prefix]}</p><p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
+            <p id="pmodel">产品型号：${cardMapping[prefix] ? cardMapping[prefix] : cardMapping[prefix2]}</p><p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
                 `);
 
                     }
