@@ -200,7 +200,7 @@
                     const prefix = serialNumber.substring(0, 6);
                     const prefix2 = serialNumber.substring(0, 8);
 
-                    if (!cardMapping[prefix] || !cardMapping[prefix2]) {
+                    if (!cardMapping[prefix] && !cardMapping[prefix2]) {
                         $('#reminder_text').text('请输入正确的序列号！')
                     } else {
                         var year = serialNumber.substring(6, 8);
