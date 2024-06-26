@@ -214,18 +214,25 @@
                 createCode(); //刷新验证码  
             } else { //输入正确时  
                 var serialNumber = sn
-                if (serialNumber.length !== EXPECTED_SERIAL_LENGTH) {
+                if (serialNumber.length !== EXPECTED_SERIAL_LENGTH && serialNumber.length !== EXPECTED_SERIAL_LENGTH2) {
                     $('#reminder_text').text('请输入正确的序列号！')
                 } else {
                     const prefix = serialNumber.substring(0, 6);
                     const prefix2 = serialNumber.substring(0, 8);
+                    const prefix3 = serialNumber.substring(0, 4);
 
-                    if (!cardMapping[prefix] && !cardMapping[prefix2]) {
+                    if (!cardMapping[prefix] && !cardMapping[prefix2] && !cardMapping[prefix3]) {
                         $('#reminder_text').text('请输入正确的序列号！')
                     } else {
                         var year = serialNumber.substring(6, 8);
                         var month = serialNumber.substring(8, 10);
                         var day = serialNumber.substring(10, 12);
+
+                        if (serialNumber.length == EXPECTED_SERIAL_LENGTH2) {
+                            var year = serialNumber.substring(4, 6);
+                            var month = serialNumber.substring(6, 8);
+                            var day = serialNumber.substring(8, 10);
+                        }
 
                         // Parse the date from the serial number
                         var parsedDate = new Date("20" + year, month - 1, day); // months are 0-indexed in JavaScript
@@ -271,10 +278,17 @@
 
 
                         // 修改输出格式，将日期和显卡型号放入不同的元素中
-                        $('#reminder_text').html(`
+                        if (serialNumber.length == EXPECTED_SERIAL_LENGTH) {
+                            $('#reminder_text').html(`
             <p id="pmodel">产品型号：${cardMapping[prefix] ? cardMapping[prefix] : cardMapping[prefix2]}</p><p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
                 `);
-
+                        } else if (serialNumber.length == EXPECTED_SERIAL_LENGTH2) {
+                            $('#reminder_text').html(`
+            <p id="pmodel">产品型号：${cardMapping[prefix3]}</p><p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
+                `);
+                        } else {
+                            $('#reminder_text').text('请输入正确的序列号！');
+                        }
                     }
                 }
                 $('#js_input2').val(''); //清空文本框  
