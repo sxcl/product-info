@@ -182,6 +182,47 @@
             // 2024/06/26新增
             "ZF4700": "ZEPHYR RTX 4070 Ti 11G 风神",
             "ZF4705": "ZEPHYR RTX 4070 SUPER 12G 深渊",
+
+            // 20240909新增
+            "Z3501S": "ZEPHYR RTX 3050 8G 樱吹雪",
+            "Z3502V": "ZEPHYR RTX 3050 8G 风神 Mini",
+            "Z3601V": "ZEPHYR RTX 3060 12G 风神 Mini",
+            "Z3602S": "ZEPHYR RTX 3060 12G 樱吹雪",
+            "Z3604A": "ZEPHYR RTX 3060 12G 浪花",
+            "Z3605A": "ZEPHYR RTX 3060 Ti 8G 浪花",
+            "Z3609A": "ZEPHYR RTX 3060 TI G6X 8G 浪花 V2",
+            "Z3606S": "ZEPHYR RTX 3060 Ti 8G 樱吹雪",
+            "Z3610S": "ZEPHYR RTX 3060 Ti 8G 樱吹雪 Pro",
+            "Z3612A": "ZEPHYR RTX 3060 12G 浪花",
+            "Z3613A": "ZEPHYR RTX 3060 Ti 8G 浪花",
+            "Z3701A": "ZEPHYR RTX 3070 LHR 8G 浪花",
+            "Z3702A": "ZEPHYR RTX 3070 TI 8G 浪花",
+            "Z3704A": "ZEPHYR RTX 3070 Ti V2 8G 浪花",
+            "Z3805A": "ZEPHYR RTX 3080 10G 浪花 V2",
+            "Z3806A": "ZEPHYR RTX 3080 LHR 10G 浪花 V2",
+            "Z3807A": "ZEPHYR RTX 3080 12G 浪花 V2",
+            "Z3808A": "ZEPHYR RTX 3080 Ti 12G 浪花 V2",
+            "Z4602S": "ZEPHYR RTX 4060 Ti 8G 樱吹雪",
+            "Z4603S": "ZEPHYR RTX 4060 Ti 16G 樱吹雪",
+            "Z4605S": "ZEPHYR & M-master RTX 4060 8G 樱吹雪",
+            "Z4701V": "ZEPHYR RTX 4070 12G 风神",
+            "Z4702S": "ZEPHYR RTX 4070 12G 樱吹雪",
+            "Z4703V": "ZEPHYR RTX 4070 Ti 12G 风神",
+            "Z4705V": "ZEPHYR RTX 4070 Ti 12G 风神",
+            "Z4706V": "ZEPHYR RTX 4070 Ti S 16G 风神",
+            "Z4707K": "ZEPHYR & Valkyrie RTX 4070 Ti S 16G",
+            "Z4801K": "ZEPHYR & Valkyrie RTX 4080 16G",
+            "Z4802K": "ZEPHYR & Valkyrie RTX 4080 Super 16G",
+            "ZV6601": "ZEPHYR RX 6650 XT 8G 风神 Mini",
+            "Z3603A": "ZEPHYR RTX 3060 12G 浪花",
+            "Z3607A": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
+            "Z3608A": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
+            "Z3703A": "ZEPHYR RTX 3070 TI 8G 浪花 V2",
+            "Z3801A": "ZEPHYR RTX 3080 10G 浪花",
+            "Z3802A": "ZEPHYR RTX 3080 LHR 10G 浪花",
+            "Z3803A": "ZEPHYR RTX 3080 12G 浪花",
+            "Z3804A": "ZEPHYR RTX 3080 Ti 12G 浪花",
+            "Z4601S": "ZEPHYR & M-master RTX 4060 8G 樱吹雪",
         };
 
 
@@ -215,95 +256,66 @@
                 createCode(); //刷新验证码  
             } else { //输入正确时  
                 var serialNumber = sn
-                // if (serialNumber.length !== EXPECTED_SERIAL_LENGTH && serialNumber.length !== EXPECTED_SERIAL_LENGTH2) {
-                //     $('#reminder_text').text('请输入正确的序列号！')
-                // } else {
-                const prefix = serialNumber.substring(0, 6);
-                const prefix2 = serialNumber.substring(0, 8);
-                const prefix3 = serialNumber.substring(0, 4);
 
-                if (!cardMapping[prefix] && !cardMapping[prefix2] && !cardMapping[prefix3]) {
-                    $('#reminder_text').text('请输入正确的序列号！')
-                } else {
-
-                    if (cardMapping[prefix] || cardMapping[prefix2]) {
-                        var year = serialNumber.substring(6, 8);
-                        var month = serialNumber.substring(8, 10);
-                        var day = serialNumber.substring(10, 12);
-                    }
-                    else if (cardMapping[prefix3]) {
-                        var year = serialNumber.substring(4, 6);
-                        var month = serialNumber.substring(6, 8);
-                        var day = serialNumber.substring(8, 10);
-                    }
-
-                    // Parse the date from the serial number
-                    var parsedDate = new Date("20" + year, month - 1, day); // months are 0-indexed in JavaScript
-
-                    // Check if the parsed date is valid
-                    if (!check("20" + year + '-' + month + '-' + day)) {
-                        $('#reminder_text').text('请输入正确的序列号！');
-                        $('#js_input2').val(''); //清空文本框  
-                        createCode(); //刷新验证码  
-                        $iosDialog2.fadeIn(200);
-                        $iosDialog2.attr('aria-hidden', 'false');
-                        $iosDialog2.attr('tabindex', '0');
-                        $iosDialog2.trigger('focus');
-                        return;
-                    }
-
-                    if (!isDateGreaterThanMay1st2023("20" + year + '-' + month + '-' + day)) {
-                        $('#reminder_text').text('请输入正确的序列号！');
-                        $('#js_input2').val(''); //清空文本框  
-                        createCode(); //刷新验证码  
-                        $iosDialog2.fadeIn(200);
-                        $iosDialog2.attr('aria-hidden', 'false');
-                        $iosDialog2.attr('tabindex', '0');
-                        $iosDialog2.trigger('focus');
-                        return;
-                    }
-
-                    // Get current date
-                    var currentDate = new Date();
-                    currentDate.setHours(0, 0, 0, 0); // set time to midnight for comparison
-
-                    // Compare the parsed date with the current date
-                    if (parsedDate > currentDate) {
-                        $('#reminder_text').text('请输入正确的序列号！');
-                        $('#js_input2').val(''); //清空文本框  
-                        createCode(); //刷新验证码  
-                        $iosDialog2.fadeIn(200);
-                        $iosDialog2.attr('aria-hidden', 'false');
-                        $iosDialog2.attr('tabindex', '0');
-                        $iosDialog2.trigger('focus');
-                        return;
-                    }
-
-
-                    // 修改输出格式，将日期和显卡型号放入不同的元素中
-                    if (cardMapping[prefix]) {
-                        $('#reminder_text').html(`
-            <p id="pmodel">产品型号：${cardMapping[prefix]}</p><p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
-                `);
-                    } else if (cardMapping[prefix2]) {
-                        $('#reminder_text').html(`
-            <p id="pmodel">产品型号：${cardMapping[prefix2]}</p><p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
-                `);
-                    } else if (cardMapping[prefix3]) {
-                        $('#reminder_text').html(`
-            <p id="pmodel">产品型号：${cardMapping[prefix3]}</p><p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
-                `);
-                    } else {
-                        $('#reminder_text').text('请输入正确的序列号！');
+                // 动态匹配料号
+                var matchedMaterialNumber = null;
+                for (var material in cardMapping) {
+                    if (serialNumber.startsWith(material)) {
+                        matchedMaterialNumber = material;
+                        break;
                     }
                 }
-                // }
-                $('#js_input2').val(''); //清空文本框  
-                createCode(); //刷新验证码  
-                $iosDialog2.fadeIn(200);
-                $iosDialog2.attr('aria-hidden', 'false');
-                $iosDialog2.attr('tabindex', '0');
-                $iosDialog2.trigger('focus');
+
+                if (matchedMaterialNumber) {
+                    // 获取料号后面的部分
+                    var remainingPart = serialNumber.substring(matchedMaterialNumber.length);
+
+                    // 检查后续部分是否是6位日期格式
+                    var regExpDate = /^[0-9]{6}$/;
+                    // 按照原有规则解析日期
+                    var year = remainingPart.substring(0, 2);
+                    var month = remainingPart.substring(2, 4);
+                    var day = remainingPart.substring(4, 6);
+                    var parsedDate = new Date("20" + year, month - 1, day);
+
+                    if (remainingPart.length >= 6 && regExpDate.test(remainingPart.substring(0, 6)) && check("20" + year + '-' + month + '-' + day)) {
+
+                        // 显示原有的提示信息（产品型号和出厂日期）
+                        $('#reminder_text').html(`
+                        <p id="pmodel">产品型号：${cardMapping[matchedMaterialNumber]}</p>
+                        <p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
+                    `);
+                    } else if (remainingPart.length >= 8) {
+                        // 获取中间无意义的4位数字以及后4位（年份和周别）
+                        var meaninglessPart = remainingPart.substring(0, 4);
+                        var yearAndWeek = remainingPart.substring(4, 8);
+                        var year = yearAndWeek.substring(0, 2);
+                        var week = yearAndWeek.substring(2, 4);
+
+                        // 检查周数是否在1到52之间
+                        if (parseInt(week) < 1 || parseInt(week) > 52) {
+                            $('#reminder_text').text('请输入正确的序列号格式！');
+                            $iosDialog2.fadeIn(200);
+                            return;
+                        }
+
+                        // 显示新的提示信息（料号和生产年份、周数）
+                        $('#reminder_text').html(`
+                        <p id="pmodel">产品型号：${cardMapping[matchedMaterialNumber]}</p>
+                        <p id="pouttime">出厂日期：20${year}年第${week}周</p>
+                    `);
+                    } else {
+                        $('#reminder_text').text('请输入正确的序列号格式！');
+                        $iosDialog2.fadeIn(200);
+                    }
+
+                    $('#js_input2').val('');
+                    createCode();
+                    $iosDialog2.fadeIn(200);
+                } else {
+                    $('#reminder_text').text('请输入正确的序列号！');
+                    $iosDialog2.fadeIn(200);
+                }
             }
         });
 
