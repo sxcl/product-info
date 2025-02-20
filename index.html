@@ -239,6 +239,13 @@
             "Z4709P": "ZEPHYR RTX 4070 Super 深渊",
             "Z4709S": "ZEPHYR RTX 4070 12G 樱吹雪 Black",
 
+            // // 2025-02-06新增
+            // "Z3615V": "ZEPHYR RTX 3060 Ti G6X 8G 风神 MX",
+            // "Z3705V": "ZEPHYR RTX 3070 Ti 8G 风神 MX",
+            // "Z4711V": "ZEPHYR RTX 4070 Super 12G 风神 MX",
+        };
+
+        var newcardMapping = {
             // 2025-02-06新增
             "Z3615V": "ZEPHYR RTX 3060 Ti G6X 8G 风神 MX",
             "Z3705V": "ZEPHYR RTX 3070 Ti 8G 风神 MX",
@@ -298,6 +305,14 @@
                     }
                 }
 
+                var newmatchedMaterialNumber = null;
+                for (var material in newcardMapping) {
+                    if (serialNumber.startsWith(material)) {
+                        newmatchedMaterialNumber = material;
+                        break;
+                    }
+                }
+
                 if (matchedMaterialNumber) {
                     // 获取料号后面的部分
                     var remainingPart = serialNumber.substring(matchedMaterialNumber.length);
@@ -344,7 +359,33 @@
                     $('#js_input2').val('');
                     createCode();
                     $iosDialog2.fadeIn(200);
-                } else {
+                }else if(newmatchedMaterialNumber){
+                    // 获取料号后面的部分
+                    var remainingPart = serialNumber.substring(newmatchedMaterialNumber.length);
+
+                        // 获取中间无意义的4位数字以及后4位（年份和周别）
+                        var meaninglessPart = remainingPart.substring(0, 4);
+                        var yearAndWeek = remainingPart.substring(4, 8);
+                        var year = yearAndWeek.substring(0, 2);
+                        var week = yearAndWeek.substring(2, 4);
+
+                        // 检查周数是否在1到52之间
+                        if (parseInt(week) < 1 || parseInt(week) > 52) {
+                            $('#reminder_text').text('请输入正确的序列号格式！');
+                            $iosDialog2.fadeIn(200);
+                            return;
+                        }
+
+                        // 显示新的提示信息（料号和生产年份、周数）
+                        $('#reminder_text').html(`
+                        <p id="pmodel">产品型号：${cardMapping[matchedMaterialNumber]}</p>
+                        <p id="pouttime">出厂日期：20${year}年第${week}周</p>
+                    `);
+
+                    $('#js_input2').val('');
+                    createCode();
+                    $iosDialog2.fadeIn(200);
+                }else {
                     $('#reminder_text').text('请输入正确的序列号！');
                     $iosDialog2.fadeIn(200);
                 }
