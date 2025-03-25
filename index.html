@@ -123,67 +123,63 @@
         const EXPECTED_SERIAL_LENGTH2 = 16; // 假设序列号的期望长度为18
 
         var cardMapping = {
+            "ZF3501": "ZEPHYR RTX 3050 8G OC 樱吹雪",
             "ZF3502": "ZEPHYR RTX 3050 8G OC 樱吹雪",
             "ZF3503": "ZEPHYR RTX 3050 8G OC 樱吹雪",
             "ZF3504": "ZEPHYR RTX 3050 8G OC 樱吹雪",
             "ZF3505": "ZEPHYR RTX 3050 8G OC 樱吹雪",
             "ZF3601": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-            "ZF0011": "ZEPHYR RTX 3060 12G OC樱吹雪",
-            "ZF3501": "ZEPHYR RTX 3050 8G OC 樱吹雪",
             "ZF3602": "ZEPHYR RTX 3060 12G OC 樱吹雪",
             "ZF3603": "ZEPHYR RTX 3060 12G OC 樱吹雪",
             "ZF3604": "ZEPHYR RTX 3060 12G OC 樱吹雪",
             "ZF3605": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-            "ZF3606": "ZEPHYR RTX 3060 TI 7G OC 樱吹雪 Pro",
-            "ZF3607": "ZEPHYR RTX 3060 TI 8G OC 樱吹雪 Pro",
-            "ZF3608": "ZEPHYR RTX 3060 TI 8G OC 樱吹雪",
-            "ZF3609": "ZEPHYR RTX 3060 TI 8G OC 樱吹雪",
-            "ZF3610": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
-            "ZF3611": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
-            "ZF3701": "ZEPHYR RTX 3070 TI 8G 浪花",
+            "ZF3607": "ZEPHYR RTX 3060 TI8G OC 樱吹雪",
+            "ZF3608": "ZEPHYR RTX 3060 TI8G OC 樱吹雪",
+            "ZF3609": "ZEPHYR RTX 3060 TI8G OC 樱吹雪",
+            "ZF3610": "ZEPHYR RTX 3060 TIG6X 8G 浪花",
+            "ZF3611": "ZEPHYR RTX 3060 TIG6X 8G 浪花",
+            "ZF3612": "ZEPHYR RTX 3060 12G OC 浪花",
+            "ZF3614": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
+            "ZF3615": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
+            "ZF3616": "ZEPHYR RTX 3060 TI 8G 浪花",
+            "ZF3617": "ZEPHYR RTX 3060 12G 浪花",
+            "ZF3701": "ZEPHYR RTX 3070 TI8G 浪花",
+            "ZF3702": "ZEPHYR RTX 3070 Ti V2 浪花",
             "ZF3801": "ZEPHYR RTX 3080 10G 浪花",
             "ZF3802": "ZEPHYR RTX 3080 10G 浪花",
             "ZF3803": "ZEPHYR RTX 3080 LHR 10G 浪花",
             "ZF3804": "ZEPHYR RTX 3080 12G 浪花",
             "ZF3805": "ZEPHYR RTX 3080 Ti 浪花",
-            "ZF0022": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
-            "ZF0008": "ZEPHYR RTX 3070 TI 8G 浪花",
-            "ZF3702": "ZEPHYR RTX 3070 Ti V2 浪花",
             "ZF3806": "ZEPHYR RTX 3080 12G 浪花 V2",
+            "ZF3808": "ZEPHYR RTX 3080 Ti 12G 浪花",
             "ZF3807": "ZEPHYR RTX 3080 LHR 10G 浪花 V2",
-            "ZF3614": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
-            "ZF3615": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
+            "ZF0022": "ZEPHYR RTX 3060 TIG6X 8G 浪花",
+            "ZF0008": "ZEPHYR RTX 3070 TI8G 浪花",
             "ZF3703": "ZEPHYR RTX 3070 Ti V2 浪花",
+            "ZF4700": "ZEPHYR RTX 4070 Ti 11G 风神",
             "ZF4701": "ZEPHYR RTX 4070 12G 风神",
             "ZF4702": "ZEPHYR RTX 4070 Ti 12G 风神",
-            "ZF4601": "ZEPHYR RTX 4060 Ti 8G 樱吹雪",
             "ZF4703": "ZEPHYR RTX 4070 Ti Super 16G 风神",
+            "ZF4704": "ZEPHYR RTX 4070 12G 风神",
+            "ZF4601": "ZEPHYR RTX 4060 Ti 8G 樱吹雪",
             "ZF0020": "ZEPHYR RTX 3060 TI8G OC 樱吹雪",
+            "ZF3606": "ZEPHYR RTX 3060 TI 7G OC 樱吹雪 Pro",
             "LH361224": "ZEPHYR RTX 3060 12G OC 浪花",
             "LH360224": "ZEPHYR RTX 3060 12G OC 樱吹雪",
             "LH360223": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-
-            // 2024/06/13新增
-            "ZF3616": "ZEPHYR RTX 3060 TI 8G 浪花",
-            "ZF3617": "ZEPHYR RTX 3060 12G 浪花",
-            "ZF4602": "ZEPHYR RTX 4060 8G 樱吹雪&机械大师联名",
-            "ZF4704": "ZEPHYR RTX 4070 12G 风神",
             "ZF4801": "ZEPHYR & Valkyrie RTX 4080 16G 水冷",
             "ZF4802": "ZEPHYR & Valkyrie RTX 4080 SUPER 16G 水冷",
-            "ZF3612": "ZEPHYR RTX 3060 12G OC 浪花",
-            "ZF3808": "ZEPHYR RTX 3080 Ti 12G 浪花",
-
             "ZF3705": "ZEPHYR RTX 3070 8G LHR 浪花",
-            "ZA6501": "ZEPHYR RX 6650XT 8G 风神 龙年限定版",
-            "FA6501": "ZEPHYR RX 6650XT 8G 风神 龙年限定版",
-            "ZA66": "ZEPHYR RX 6650XT 8G 风神 龙年限定版",
-            "FA66": "ZEPHYR RX 6650XT 8G 风神 龙年限定版",
-
-            // 2024/06/26新增
-            "ZF4700": "ZEPHYR RTX 4070 Ti 11G 风神",
+            "ZA6501": "ZEPHYR RX 6650XT 8G 风神 龙年限定",
+            "FA6501": "ZEPHYR RX 6650XT 8G 风神 龙年限定",
+            "FA66": "ZEPHYR RX 6650XT 8G 风神 龙年限定",
+            "ZA66": "ZEPHYR RX 6650XT 8G 风神 龙年限定",
             "ZF4705": "ZEPHYR RTX 4070 SUPER 12G 深渊",
+            "ZF4602": "ZEPHYR RTX 4060 8G 樱吹雪&机械大师联名"
+        };
 
-            // 20240909新增
+        var newcardMapping = {
+            // 2025-02-06新增
             "Z3501S": "ZEPHYR RTX 3050 8G 樱吹雪",
             "Z3502V": "ZEPHYR RTX 3050 8G 风神 Mini",
             "Z3601V": "ZEPHYR RTX 3060 12G 风神 Mini",
@@ -223,9 +219,6 @@
             "Z3803A": "ZEPHYR RTX 3080 12G 浪花",
             "Z3804A": "ZEPHYR RTX 3080 Ti 12G 浪花",
             "Z4601S": "ZEPHYR & M-master RTX 4060 8G 樱吹雪",
-
-            // 20241029新增
-            "ZV6601": "ZEPHYR RX 6650 XT 8G 风神 Mini",
             "ZV6602": "ZEPHYR RX 6600 8G 风神 Mini",
             "ZV6603": "ZEPHYR RX 6600 XT 8G 风神 Mini",
             "ZV6604": "ZEPHYR RX 6650 XT 8G 风神 Mini",
@@ -234,19 +227,8 @@
             "ZV6901": "ZEPHYR RX 6900 XT 16G",
             "Z4801K": "ZEPHYR & Valkyrie RTX 4080 16G 水冷",
             "Z4802K": "ZEPHYR & Valkyrie RTX 4080 SUPER 16G 水冷",
-
-            // 20241103新增
             "Z4709P": "ZEPHYR RTX 4070 Super 深渊",
             "Z4709S": "ZEPHYR RTX 4070 12G 樱吹雪 Black",
-
-            // // 2025-02-06新增
-            // "Z3615V": "ZEPHYR RTX 3060 Ti G6X 8G 风神 MX",
-            // "Z3705V": "ZEPHYR RTX 3070 Ti 8G 风神 MX",
-            // "Z4711V": "ZEPHYR RTX 4070 Super 12G 风神 MX",
-        };
-
-        var newcardMapping = {
-            // 2025-02-06新增
             "Z3615V": "ZEPHYR RTX 3060 Ti G6X 8G 风神 MX",
             "Z3705V": "ZEPHYR RTX 3070 Ti 8G 风神 MX",
             "Z4711V": "ZEPHYR RTX 4070 Super 12G 风神 MX",
@@ -254,8 +236,17 @@
             "Z3505S": "ZEPHYR RTX 3050 8G 樱吹雪",
             "Z3706V": "ZEPHYR RTX 3070 LHR 8G 风神 MX",
             "ZV6605": "ZEPHYR RX 6600E 8G 风神 Mini",
+            "Z3707V": "ZEPHYR RTX 3070 8G 风神 MX",
+            "ZV6606": "ZEPHYR RX 6650 XT 8G",
+            "ZV7901": "ZEPHYR RX 7900 XT 20G",
+            "ZV7902": "ZEPHYR RX 7900 XTX 24G",
+            "Z3508L": "ZEPHYR RTX 3050 6G LP",
+            "Z3708B": "ZEPHYR RTX 3070 Ti V2 8G",
+            "Z3809B": "ZEPHYR RTX 3080 Ti 12G",
+            "Z4708K": "ZEPHYR & Valkyrie RTX 4070 Super 12G",
+            "Z4709K": "ZEPHYR & Valkyrie RTX 4070 Ti 12G",
+            "Z4712V": "ZEPHYR RTX 4070 Super 12G 风神"
         };
-
 
         function clearText() {
             $('#sn').val('')
